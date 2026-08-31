@@ -1,0 +1,8 @@
+{
+  "name": "ApexNet Turbo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom",
+  "id": "40bdb9ae"
+}
