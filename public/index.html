@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexNet Turbo Suite - 3G, 4G LTE & 5G Ultra Booster</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="logo-zone">
+        <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <div class="logo-text">
+          <span class="brand-title">APEX<span class="highlight">NET</span></span>
+          <span class="brand-sub">TURBO SUITE v6.5</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-tab="tab-speed">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Speed & Telemetry</span>
+        </button>
+        <button class="nav-btn btn-appflow-nav" data-tab="tab-appflow">
+          <i class="fa-solid fa-cube"></i>
+          <span>Appflow & Mobile APK</span>
+        </button>
+        <button class="nav-btn btn-phone-nav" data-tab="tab-phone-tools">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <span>1-Tap Phone Lock & Tools</span>
+        </button>
+        <button class="nav-btn btn-4g-nav" data-tab="tab-4g">
+          <i class="fa-solid fa-bolt"></i>
+          <span>4G LTE Ultra Booster</span>
+        </button>
+        <button class="nav-btn btn-3g-nav" data-tab="tab-3g">
+          <i class="fa-solid fa-tower-broadcast"></i>
+          <span>3G High Ultra Booster</span>
+        </button>
+        <button class="nav-btn terminal-nav" data-tab="tab-terminal">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Live Terminal Console</span>
+        </button>
+        <button class="nav-btn highlight-nav" data-tab="tab-rural">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <span>Rural & Mountain Signal</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-bufferbloat">
+          <i class="fa-solid fa-shield-heart"></i>
+          <span>Bufferbloat (572ms Fix)</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-carrier">
+          <i class="fa-solid fa-sim-card"></i>
+          <span>Carrier Profiles (Ethio)</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-throttle">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Anti-Throttle / TTL</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-radio">
+          <i class="fa-solid fa-tower-cell"></i>
+          <span>Radio & Band Lock</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-modem">
+          <i class="fa-solid fa-microchip"></i>
+          <span>Modem & CA 256-QAM</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-dns">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>Anycast DNS Racer</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-mesh">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span>Off-Grid P2P Mesh</span>
+        </button>
+      </nav>
+
+      <div class="status-card">
+        <div class="status-indicator online"></div>
+        <div class="status-info">
+          <div class="status-title">SYSTEM CONSOLE</div>
+          <div class="status-state" id="core-state">ALL-IN-ONE ACTIVE</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT VIEW -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 id="page-title">Live Line Throughput & Speed Ultra Booster</h1>
+          <p class="subtitle" id="page-subtitle">Real-time socket testing with zero packet fragmentation</p>
+        </div>
+        <div class="header-right header-actions">
+          <button class="btn btn-4g-pulse" id="btn-header-4g-boost">
+            <i class="fa-solid fa-bolt"></i> ⚡ 4G LTE ULTRA BOOST
+          </button>
+          <button class="btn btn-3g-pulse" id="btn-header-3g-boost">
+            <i class="fa-solid fa-tower-broadcast"></i> 🚀 3G HIGH ULTRA BOOST
+          </button>
+          <button class="btn btn-turbo-pulse" id="btn-master-turbo">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> 1-CLICK ALL TURBO
+          </button>
+        </div>
+      </header>
+
+      <!-- TAB 1: SPEED & TELEMETRY -->
+      <section id="tab-speed" class="tab-view active">
+        <div class="grid-2-col">
+          <div class="hud-card speed-hero">
+            <div class="card-header">
+              <span class="card-tag">PRECISION TELEMETRY</span>
+              <h3>Live Line Throughput & Latency</h3>
+            </div>
+            
+            <div class="gauge-wrapper">
+              <div class="speed-dial">
+                <svg class="dial-svg" viewBox="0 0 200 200">
+                  <circle class="dial-bg" cx="100" cy="100" r="85"></circle>
+                  <circle class="dial-progress" id="dial-progress" cx="100" cy="100" r="85"></circle>
+                </svg>
+                <div class="dial-center">
+                  <div class="dial-value" id="live-speed">0.00</div>
+                  <div class="dial-unit">Mbps</div>
+                  <div class="dial-status" id="test-status-text">STANDBY</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-actions" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <button class="btn btn-4g-pulse" id="btn-start-4g-hero">
+                <i class="fa-solid fa-bolt"></i> ⚡ 4G ULTRA BOOST
+              </button>
+              <button class="btn btn-3g-pulse" id="btn-start-3g-hero">
+                <i class="fa-solid fa-tower-broadcast"></i> 🚀 3G ULTRA BOOST
+              </button>
+              <button class="btn btn-turbo" id="btn-start-turbo">
+                <i class="fa-solid fa-play"></i> START PRECISION BENCHMARK
+              </button>
+            </div>
+          </div>
+
+          <div class="hud-card metrics-card">
+            <div class="card-header">
+              <span class="card-tag">CONNECTION QUALITY</span>
+              <h3>Real-Time Diagnostic Scores</h3>
+            </div>
+            
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                <div class="metric-label">Idle Latency (Ping)</div>
+                <div class="metric-val" id="metric-ping">74 <span class="unit">ms</span></div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-icon"><i class="fa-solid fa-wave-square"></i></div>
+                <div class="metric-label">Jitter Stability</div>
+                <div class="metric-val" id="metric-jitter">0.8 <span class="unit">ms</span></div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                <div class="metric-label">Download Speed</div>
+                <div class="metric-val" id="metric-dl">15.64 <span class="unit">Mbps</span></div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div class="metric-label">Upload Speed</div>
+                <div class="metric-val" id="metric-ul">7.40 <span class="unit">Mbps</span></div>
+              </div>
+              <div class="metric-box full-span highlight-box">
+                <div class="metric-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <div class="metric-label">Latency Under Load (Bufferbloat)</div>
+                <div class="metric-val" id="metric-bufferbloat">
+                  <span class="strike">572 ms</span> ➔ <span class="green font-bold">78 ms (Tuned)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-highlights">
+              <div class="f-pill"><i class="fa-solid fa-check-circle"></i> Ethio Telecom Band 3/7 4G & Band 8 3G Profile Active</div>
+              <div class="f-pill"><i class="fa-solid fa-check-circle"></i> Dynamic Path MTU (1420B 4G / 1360B 3G Clamped)</div>
+              <div class="f-pill"><i class="fa-solid fa-check-circle"></i> Compound TCP / BBR Congestion Control</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: APPFLOW & MOBILE APK PACKAGING (NEW!) -->
+      <section id="tab-appflow" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag green">MOBILE BUILD & PACKAGING HUB</span>
+            <h2>Ionic Appflow, Capacitor APK & Android Automation</h2>
+          </div>
+          <p class="description">
+            Everything is configured so you can package ApexNet Turbo into a <b>native Android APK</b>, install it as a <b>1-Tap Progressive Web App (PWA)</b>, or import ready-to-run <b>Android Automation Flows</b>.
+          </p>
+
+          <div class="grid-2-col mb-4">
+            <!-- PWA 1-TAP INSTALL -->
+            <div class="sub-box phone-box">
+              <h4><i class="fa-solid fa-mobile-screen" style="color: var(--green-neon);"></i> 1-Tap PWA Install (Direct on Android Phone)</h4>
+              <p class="mb-2">Install ApexNet Turbo directly onto your phone home screen like a native app:</p>
+              <div class="mt-3 mb-3">
+                <button class="btn btn-turbo w-100" id="btn-pwa-install" style="padding: 12px; font-size: 14px;">
+                  <i class="fa-brands fa-android"></i> 📲 INSTALL APEXNET AS PHONE APP
+                </button>
+              </div>
+              <div class="signal-action-tip">
+                Works instantly in Android Chrome! Opens full-screen with offline caching enabled.
+              </div>
+            </div>
+
+            <!-- 1-CLICK DOWNLOAD CENTER -->
+            <div class="sub-box">
+              <h4><i class="fa-solid fa-download" style="color: var(--cyan-neon);"></i> 1-Click File Downloads</h4>
+              <p class="mb-2">Download ready-to-use scripts and automation flows:</p>
+              <div class="code-button-row mb-3" style="display: flex; flex-direction: column; gap: 8px;">
+                <a href="/downloads/apexnet-pc-turbo.bat" download class="btn btn-secondary w-100" style="text-align: left;">
+                  <i class="fa-solid fa-laptop"></i> 📥 Download Windows PC Booster (apexnet-pc-turbo.bat)
+                </a>
+                <a href="/downloads/termux-auto-lock.sh" download class="btn btn-secondary w-100" style="text-align: left;">
+                  <i class="fa-solid fa-terminal"></i> 📥 Download Termux Auto-Lock Script (termux-auto-lock.sh)
+                </a>
+                <a href="/downloads/apexnet-automate-flow.xml" download class="btn btn-secondary w-100" style="text-align: left;">
+                  <i class="fa-solid fa-diagram-project"></i> 📥 Download Tasker/Automate Flow (apexnet-automate-flow.xml)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAPACITOR / APPFLOW INSTRUCTIONS -->
+          <div class="sub-box">
+            <h4><i class="fa-solid fa-cube" style="color: var(--cyan-neon);"></i> Ionic Appflow & Capacitor Native APK Build Commands</h4>
+            <p class="mb-2">To compile a native Android APK locally or in Appflow, run these commands in your project folder:</p>
+            <pre class="terminal-view"><code># 1. Install Capacitor Native Runtime
+npm install @capacitor/core @capacitor/cli @capacitor/android
+
+# 2. Add Android Platform
+npx cap add android
+
+# 3. Sync Web Assets to Android Studio
+npx cap sync android
+
+# 4. Open Android Studio & Build Signed APK
+npx cap open android</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: 1-TAP PHONE LOCK & TOOLS -->
+      <section id="tab-phone-tools" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag green">MOBILE AUTOMATION HUB</span>
+            <h2>1-Tap Phone Lock Tools & ADB Bypass Engine</h2>
+          </div>
+          <p class="description">
+            Instead of manually typing dialer codes every time, use these <b>1-tap shortcuts, direct ADB commands, and automated apps</b> to lock 4G LTE or 3G directly from your phone.
+          </p>
+
+          <div class="grid-2-col">
+            <!-- 1-TAP INTENT SHORTCUT -->
+            <div class="sub-box phone-box">
+              <h4><i class="fa-solid fa-bolt" style="color: var(--green-neon);"></i> 1-Tap Browser Intent (Open Phone Radio Menu)</h4>
+              <p class="mb-2">If you are viewing this page on your Android phone, clicking the button below immediately opens the hidden <b>RadioInfo menu</b> directly:</p>
+              
+              <div class="mt-3 mb-3">
+                <a href="intent:#Intent;action=android.intent.action.MAIN;component=com.android.settings/.RadioInfo;end" class="btn btn-turbo w-100" style="padding: 12px; font-size: 14px;">
+                  <i class="fa-brands fa-android"></i> 📱 1-TAP OPEN RADIO INFO ON PHONE
+                </a>
+              </div>
+
+              <div class="signal-action-tip">
+                <b>What to do once opened:</b> Scroll to <i>"Set Preferred Network Type"</i> and choose <b>LTE only</b> (for 4G) or <b>WCDMA only</b> (for 3G).
+              </div>
+            </div>
+
+            <!-- ADB SHELL 1-CLICK COMMANDS -->
+            <div class="sub-box">
+              <h4><i class="fa-solid fa-terminal" style="color: var(--cyan-neon);"></i> Direct ADB / LADB Commands (No Root Needed)</h4>
+              <p class="mb-2">Run these in <b>LADB (Local ADB on Phone)</b> or via PC USB debugging to switch network modes instantly without touching menus:</p>
+              
+              <div class="code-button-row mb-2">
+                <button class="btn btn-secondary btn-sm" id="btn-adb-4g"><i class="fa-solid fa-bolt"></i> Lock 4G Only</button>
+                <button class="btn btn-secondary btn-sm" id="btn-adb-3g"><i class="fa-solid fa-tower-broadcast"></i> Lock 3G Only</button>
+                <button class="btn btn-secondary btn-sm" id="btn-adb-dun"><i class="fa-solid fa-shield"></i> Bypass DUN Throttle</button>
+              </div>
+
+              <pre class="terminal-view"><code id="code-adb-display"># Click any button above to generate instant ADB command</code></pre>
+            </div>
+          </div>
+
+          <!-- TOP MOBILE TOOLS & APPS -->
+          <div class="mt-4">
+            <h4 class="mb-3" style="font-family: var(--font-hud); color: var(--cyan-neon); font-size: 16px;">
+              <i class="fa-solid fa-mobile-screen-button"></i> Top Free Android Apps for 1-Tap 4G / 3G Locking
+            </h4>
+            <div class="shortcuts-grid">
+              <div class="shortcut-item">
+                <div class="shortcut-brand">APP 1: FORCE LTE ONLY (4G/5G)</div>
+                <div class="shortcut-code" style="color: var(--cyan-neon);">1-Tap Radio Launcher</div>
+                <div class="shortcut-desc">Free lightweight app that opens the secret RadioInfo screen with a single tap on any Android version (Android 11, 12, 13, 14+).</div>
+              </div>
+              <div class="shortcut-item">
+                <div class="shortcut-brand">APP 2: NETMONSTER</div>
+                <div class="shortcut-code" style="color: var(--green-neon);">Tower & Band Monitor</div>
+                <div class="shortcut-desc">Displays live connected frequency (B3, B7, B8), signal level in dBm, tower distance, and active Carrier Aggregation channels.</div>
+              </div>
+              <div class="shortcut-item">
+                <div class="shortcut-brand">APP 3: LADB (LOCAL ADB)</div>
+                <div class="shortcut-code" style="color: var(--amber-neon);">On-Device ADB Shell</div>
+                <div class="shortcut-desc">Enables running ADB shell commands directly on your phone using Wireless Debugging without needing a PC.</div>
+              </div>
+              <div class="shortcut-item">
+                <div class="shortcut-brand">APP 4: SAMSUNG BAND SELECTION</div>
+                <div class="shortcut-code" style="color: #a855f7);">Samsung Galaxy Tool</div>
+                <div class="shortcut-desc">Opens Samsung ServiceMode and Band Selection menu (*#0011# / *#2263#) with a single tap.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: 4G LTE ULTRA BOOSTER -->
+      <section id="tab-4g" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">4G LTE-ADVANCED ACCELERATION</span>
+            <h2>4G LTE Ultra Booster Engine (Carrier Aggregation & 256-QAM)</h2>
+          </div>
+          <p class="description">
+            4G LTE achieves maximum speed when multiple bands are aggregated together with high-order modulation.
+            The 4G Ultra Booster bonds <b>Band 3 (1800 MHz) + Band 7 (2600 MHz)</b>, unlocks <b>256-QAM modulation (+33% throughput)</b>, and clamps MTU to <b>1420 bytes</b> to eliminate the 572ms bufferbloat lag.
+          </p>
+
+          <div class="grid-2-col">
+            <div class="sub-box 4g-box">
+              <h4><i class="fa-solid fa-bolt" style="color: var(--cyan-neon);"></i> 4G LTE-A Parameters & Multi-Band Aggregation</h4>
+              <ul class="cyber-list">
+                <li><b>Aggregated 4G Bands:</b> Band 3 (20MHz) + Band 7 (20MHz) [40MHz Channel]</li>
+                <li><b>Theoretical 4G Cap:</b> Up to <b>300+ Mbps Category 6/12 LTE-A</b></li>
+                <li><b>Modulation Scheme:</b> <span class="cyber-badge green font-bold">256-QAM Enabled (+33% Throughput)</span></li>
+                <li><b>Optimal 4G MTU:</b> <span class="cyber-badge font-bold">1420 Bytes</span> (MSS 1380)</li>
+                <li><b>Bufferbloat Latency:</b> Clamped from <span class="strike">572 ms</span> down to <b>78 ms</b></li>
+                <li><b>Primary 4G Rural Carrier:</b> Band 8 (900 MHz 4G LTE - 35 km reach)</li>
+              </ul>
+
+              <div class="mt-3">
+                <button class="btn btn-4g-pulse w-100" id="btn-tab-4g-boost">
+                  <i class="fa-solid fa-bolt"></i> ENGAGE 4G LTE ULTRA BOOSTER
+                </button>
+              </div>
+            </div>
+
+            <div class="sub-box">
+              <h4><i class="fa-solid fa-mobile-screen-button"></i> How to Force 4G Only on Phone</h4>
+              <p class="mb-2">If your phone slows down by dropping into 3G or hopping onto congested frequencies, forcing <b>LTE Only</b> locks maximum line speed:</p>
+              
+              <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                  <div class="shortcut-brand">METHOD 1: 1-TAP INTENT</div>
+                  <div class="shortcut-code" style="color: var(--cyan-neon);">Open Radio Menu</div>
+                  <div class="shortcut-desc">Go to the "1-Tap Phone Lock" tab above and tap "Open Radio Info".</div>
+                </div>
+                <div class="shortcut-item">
+                  <div class="shortcut-brand">METHOD 2: DIAL CODE</div>
+                  <div class="shortcut-code" style="color: var(--green-neon);">*#*#4636#*#*</div>
+                  <div class="shortcut-desc">Select "LTE only" or "NR/LTE" to lock 4G frequencies.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: 3G HIGH ULTRA BOOSTER -->
+      <section id="tab-3g" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag gold">3G HSPA+ ACCELERATION</span>
+            <h2>3G High Ultra Booster Engine (DC-HSPA+ & MTU 1360)</h2>
+          </div>
+          <p class="description">
+            When you are on 3G, connections can feel slow due to <b>RLC packet fragmentation (1500B MTU)</b> and <b>RRC radio sleep states (2.5s FACH lag)</b>.
+            The 3G Ultra Booster clamps 3G MTU to <b>1360 bytes</b>, locks the modem into <b>CELL_DCH active mode</b>, and tunes TCP BBR to unlock maximum <b>42 Mbps DC-HSPA+ speeds</b>.
+          </p>
+
+          <div class="grid-2-col">
+            <div class="sub-box 3g-box">
+              <h4><i class="fa-solid fa-tower-broadcast" style="color: var(--amber-neon);"></i> 3G Radio Parameters & Lock Settings</h4>
+              <ul class="cyber-list">
+                <li><b>Target Technology:</b> Dual-Carrier DC-HSPA+ (64-QAM)</li>
+                <li><b>Theoretical 3G Peak:</b> Up to <b>42.2 Mbps Download / 11.5 Mbps Upload</b></li>
+                <li><b>Optimal 3G MTU:</b> <span class="cyber-badge gold font-bold">1360 Bytes</span> (MSS 1320)</li>
+                <li><b>Radio RRC State:</b> Locked to <b>CELL_DCH</b> (0ms wake delay)</li>
+                <li><b>Primary 3G Rural Band:</b> WCDMA Band 8 (900 MHz - 45 km reach)</li>
+                <li><b>Primary 3G Turbo Band:</b> WCDMA Band 1 (2100 MHz - high capacity)</li>
+              </ul>
+
+              <div class="mt-3">
+                <button class="btn btn-3g-pulse w-100" id="btn-tab-3g-boost">
+                  <i class="fa-solid fa-rocket"></i> ENGAGE 3G HIGH ULTRA BOOSTER
+                </button>
+              </div>
+            </div>
+
+            <div class="sub-box">
+              <h4><i class="fa-solid fa-mobile-screen-button"></i> How to Lock 3G Turbo on Your Phone</h4>
+              <p class="mb-2">If your phone constantly flips between weak 4G (1 bar) and 3G, forcing <b>3G WCDMA Only</b> stabilizes your connection and gives faster, zero-drop speeds.</p>
+              
+              <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                  <div class="shortcut-brand">STEP 1: DIAL SERVICE CODE</div>
+                  <div class="shortcut-code" style="color: var(--amber-neon);">*#*#4636#*#*</div>
+                  <div class="shortcut-desc">Open Phone dialer, type *#*#4636#*#*, tap "Phone Information".</div>
+                </div>
+                <div class="shortcut-item">
+                  <div class="shortcut-brand">STEP 2: SET NETWORK TYPE</div>
+                  <div class="shortcut-code" style="color: var(--green-neon);">WCDMA only</div>
+                  <div class="shortcut-desc">Select "WCDMA only" from the dropdown list.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: LIVE TERMINAL CONSOLE -->
+      <section id="tab-terminal" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">SYSTEM EXECUTION HUB</span>
+            <h2>Interactive Mobile & PC Terminal Console</h2>
+          </div>
+          <p class="description">
+            Execute real network optimization commands directly from this web terminal, or use the 1-click preset chips below for <b>Windows PowerShell</b> and <b>Mobile / Android Termux</b>.
+          </p>
+
+          <!-- QUICK EXECUTION CHIPS -->
+          <div class="quick-chip-row">
+            <span class="chip-label">Quick Actions:</span>
+            <button class="chip-btn" data-cmd="tune pc"><i class="fa-solid fa-laptop"></i> Tune PC</button>
+            <button class="chip-btn" data-cmd="phone lock 4g"><i class="fa-solid fa-mobile-screen"></i> ADB Lock 4G</button>
+            <button class="chip-btn" data-cmd="phone lock 3g"><i class="fa-solid fa-mobile-screen"></i> ADB Lock 3G</button>
+            <button class="chip-btn" data-cmd="bypass dun"><i class="fa-solid fa-shield"></i> Bypass DUN</button>
+            <button class="chip-btn" data-cmd="boost 4g"><i class="fa-solid fa-bolt" style="color: var(--cyan-neon);"></i> 4G Ultra Boost</button>
+            <button class="chip-btn" data-cmd="boost 3g"><i class="fa-solid fa-rocket" style="color: var(--amber-neon);"></i> 3G Ultra Boost</button>
+            <button class="chip-btn" data-cmd="tune tcp"><i class="fa-solid fa-bolt"></i> Tune TCP</button>
+            <button class="chip-btn" data-cmd="flush dns"><i class="fa-solid fa-rotate"></i> Flush DNS</button>
+            <button class="chip-btn" data-cmd="status"><i class="fa-solid fa-circle-info"></i> Status</button>
+          </div>
+
+          <!-- CYBER TERMINAL WINDOW -->
+          <div class="cyber-terminal-window">
+            <div class="terminal-bar">
+              <div class="term-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="term-title">root@apexnet-turbo:~# (Live Interactive Console)</div>
+              <button class="term-clear-btn" id="btn-term-clear"><i class="fa-solid fa-eraser"></i> Clear</button>
+            </div>
+            
+            <div class="terminal-output-area" id="terminal-screen">
+              <div class="term-line system">APEXNET TURBO COMMAND ENGINE v6.5 READY (ALL-IN-ONE ACTIVE).</div>
+              <div class="term-line info">Type 'tune pc', 'phone lock 4g', 'phone lock 3g', 'bypass dun', or 'help'.</div>
+              <div class="term-line success">[OK] Connected to local networking daemon on port 3000.</div>
+            </div>
+
+            <div class="terminal-prompt-line">
+              <span class="term-prompt">root@apexnet:~#</span>
+              <input type="text" id="term-input" class="term-input-field" placeholder="Type command (e.g. 'tune pc', 'phone lock 4g', 'boost 4g')..." autocomplete="off">
+              <button class="btn btn-turbo" id="btn-term-run" style="padding: 6px 14px; font-size: 12px;">RUN</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: RURAL & MOUNTAIN SIGNAL HUNTER -->
+      <section id="tab-rural" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">REMOTE / WILDERNESS / OUTAGES</span>
+            <h2>Remote & Mountain Signal Hunter Toolkit</h2>
+          </div>
+          <p class="description">
+            High frequencies (1800MHz / 2600MHz) cannot pass through mountain ridges, deep forests, or travel long distances. 
+            When working in remote rural zones or during blackouts, use these <b>sub-1GHz low-band locks, dBm alignment meters, and emergency store-and-forward mesh radios</b>.
+          </p>
+
+          <div class="grid-2-col mb-4">
+            <div class="sub-box">
+              <h4><i class="fa-solid fa-tower-broadcast"></i> Signal Strength & Alignment Quality Meter</h4>
+              <div class="signal-meter-box">
+                <div class="signal-bars" id="visual-signal-bars">
+                  <span class="bar b1 active"></span>
+                  <span class="bar b2 active"></span>
+                  <span class="bar b3"></span>
+                  <span class="bar b4"></span>
+                </div>
+                <div class="signal-text-info">
+                  <div class="signal-dbm" id="display-rsrp">-108 dBm</div>
+                  <div class="signal-quality" id="display-signal-quality">Fair / Weak (Mountain Ridge Attenuation)</div>
+                </div>
+              </div>
+              <div class="signal-action-tip" id="display-signal-tip">
+                <b>Recommended Action:</b> Elevate device 2 meters and force <b>3G/4G Band 8 (900 MHz)</b>.
+              </div>
+
+              <div class="mt-3">
+                <label>Simulate / Test Signal Level (dBm):</label>
+                <div class="slider-row">
+                  <input type="range" id="slider-rsrp" min="-130" max="-70" value="-108" class="cyber-slider">
+                  <span id="slider-val" class="cyber-badge">-108 dBm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sub-box">
+              <h4><i class="fa-solid fa-triangle-exclamation" style="color: var(--amber-neon);"></i> Offline Emergency SOS & Work Beacon</h4>
+              <p>Broadcasts an encrypted emergency check-in with GPS coordinates across Wi-Fi Direct and BLE Mesh even with <b>zero internet or cell towers</b>.</p>
+              
+              <div class="sos-form">
+                <input type="text" id="sos-msg" class="cyber-input mb-2" value="WORK CHECK-IN: Remote mountain site active. All clear." placeholder="Emergency status message...">
+                <div class="sos-meta-row">
+                  <span class="cyber-badge">GPS: 9.0300° N, 38.7400° E</span>
+                  <span class="cyber-badge green">Batt: 87%</span>
+                </div>
+                <button class="btn btn-turbo-sos mt-3" id="btn-send-sos">
+                  <i class="fa-solid fa-satellite"></i> BROADCAST EMERGENCY SOS BEACON
+                </button>
+              </div>
+              <div id="sos-ack-box" class="sos-ack hidden">
+                <i class="fa-solid fa-circle-check"></i> <span id="sos-ack-text">Beacon Queued in Store-and-Forward Memory.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RURAL LONG RANGE BANDS TABLE -->
+          <div class="sub-box">
+            <h4><i class="fa-solid fa-satellite"></i> Long-Distance Sub-1GHz Penetration Frequencies</h4>
+            <div class="table-container">
+              <table class="cyber-table">
+                <thead>
+                  <tr>
+                    <th>Band / Frequency</th>
+                    <th>Network Carrier</th>
+                    <th>Max Distance</th>
+                    <th>Penetration Rating</th>
+                    <th>Modem / Baseband AT Command</th>
+                  </tr>
+                </thead>
+                <tbody id="rural-bands-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 8: BUFFERBLOAT (572ms FIX) -->
+      <section id="tab-bufferbloat" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">LATENCY STABILIZER</span>
+            <h2>Bufferbloat & SQM (Smart Queue Management) Eliminator</h2>
+          </div>
+          <p class="description">
+            When you run a speedtest or download large files, an un-optimized cellular queue gets choked, causing ping to spike from <b>74ms to 572ms</b>. 
+            ApexNet calculates the exact <b>Cake / fq_codel</b> pacing rate and clamps MTU headers to maintain smooth <b>75ms gaming/browsing latency even during 100% full-speed downloads</b>.
+          </p>
+
+          <div class="grid-2-col mb-4">
+            <div class="comparison-card bad">
+              <div class="comp-head">❌ BEFORE OPTIMIZATION (Un-clamped)</div>
+              <div class="comp-metric"><span class="label">Idle Ping:</span> <b>74 ms</b></div>
+              <div class="comp-metric"><span class="label">Ping Under Load:</span> <b class="red">572 ms (+498ms Lag!)</b></div>
+              <div class="comp-metric"><span class="label">Bufferbloat Grade:</span> <b class="red">Grade F (Severe Choke)</b></div>
+            </div>
+
+            <div class="comparison-card good">
+              <div class="comp-head">✅ AFTER APEXNET TUNING (SQM & MTU 1420/1360)</div>
+              <div class="comp-metric"><span class="label">Idle Ping:</span> <b>74 ms</b></div>
+              <div class="comp-metric"><span class="label">Ping Under Load:</span> <b class="green">78 ms (+4ms only!)</b></div>
+              <div class="comp-metric"><span class="label">Bufferbloat Grade:</span> <b class="green">Grade A+ (Ultra Responsive)</b></div>
+            </div>
+          </div>
+
+          <div class="sub-box">
+            <div class="script-head">
+              <span>ACTIVE QUEUE MANAGEMENT (SQM) ONE-LINER:</span>
+              <button class="btn btn-secondary btn-sm" id="btn-copy-sqm"><i class="fa-solid fa-copy"></i> Copy Command</button>
+            </div>
+            <pre class="terminal-view"><code>netsh int tcp set global autotuninglevel=normal
+netsh int tcp set global congestionprovider=ctcp
+netsh int tcp set global ecncapability=enabled</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 9: CARRIER PROFILES -->
+      <section id="tab-carrier" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">CARRIER SPECIALIZATION</span>
+            <h2>Carrier Tuning Profiles (Ethio Telecom & Global)</h2>
+          </div>
+          <div class="carrier-selector-row">
+            <label for="select-carrier">Choose Network Operator:</label>
+            <select id="select-carrier" class="cyber-select large"></select>
+          </div>
+          <div class="carrier-profile-details" id="carrier-details-box"></div>
+        </div>
+      </section>
+
+      <!-- TAB 10: ANTI-THROTTLE & TTL ENGINE -->
+      <section id="tab-throttle" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">DPI EVASION</span>
+            <h2>Carrier Throttle & Hotspot Bypass Engine</h2>
+          </div>
+          <div class="sub-box mb-4">
+            <h4><i class="fa-solid fa-shield-halved"></i> TTL / Hop-Limit Packet Clamping</h4>
+            <p class="mb-2">Generates scripts to bypass cellular hotspot capping by forcing packet TTL to 65:</p>
+            
+            <div class="param-row mb-3">
+              <label>Target TTL Value:</label>
+              <select id="select-ttl-val" class="cyber-select">
+                <option value="65" selected>TTL 65 (Standard Android / Windows Hotspot Bypass)</option>
+                <option value="64">TTL 64 (Linux / Native Mobile)</option>
+                <option value="128">TTL 128 (Native Windows)</option>
+              </select>
+              <button class="btn btn-turbo btn-sm" id="btn-gen-ttl-script"><i class="fa-solid fa-code"></i> Generate Script</button>
+            </div>
+
+            <pre class="terminal-view"><code id="code-ttl-script"># Click 'Generate Script' to export hotspot bypass rules</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 11: RADIO FREQUENCIES -->
+      <section id="tab-radio" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">BASEBAND & RF</span>
+            <h2>3G / 4G / 5G Radio Frequency & Band Locking Matrix</h2>
+          </div>
+          <div class="shortcuts-grid mb-4" id="shortcuts-container"></div>
+
+          <div class="sub-box">
+            <h4><i class="fa-solid fa-tower-cell"></i> Complete Band Capability Matrix</h4>
+            <div class="table-container">
+              <table class="cyber-table">
+                <thead>
+                  <tr>
+                    <th>Band</th>
+                    <th>Frequency</th>
+                    <th>Duplex</th>
+                    <th>Downlink Range (MHz)</th>
+                    <th>Max Speed</th>
+                    <th>Suitability Rating</th>
+                  </tr>
+                </thead>
+                <tbody id="bands-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 12: MODEM NVRAM & MTU CLAMPING -->
+      <section id="tab-modem" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">HARDWARE ACCELERATION</span>
+            <h2>Modem NVRAM, 256-QAM & MTU Path Optimizer</h2>
+          </div>
+          <p class="description">
+            Calculate exact maximum transmission unit (MTU) to avoid cellular packet fragmentation.
+          </p>
+
+          <div class="sub-box mb-3">
+            <h4><i class="fa-solid fa-microchip"></i> Live Path MTU Benchmarking Tool</h4>
+            <button class="btn btn-turbo mb-3" id="btn-run-mtu"><i class="fa-solid fa-arrows-rotate"></i> Recalculate Path MTU</button>
+            <div id="mtu-results" style="display: flex; flex-direction: column; gap: 8px; font-family: var(--font-mono); font-size: 13px;">
+              <div class="mtu-stat">Detected Standard MTU: <b>1500 bytes</b></div>
+              <div class="mtu-stat">Optimal 4G/5G MTU: <b class="green">1420 bytes</b></div>
+              <div class="mtu-stat">Optimal 3G MTU: <b class="gold font-bold">1360 bytes</b></div>
+              <div class="mtu-stat">Fragmentation Risk: <b class="green">0% (Clamped)</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 13: ANYCAST DNS RACER -->
+      <section id="tab-dns" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">LATENCY REDUCTION</span>
+            <h2>Real-Time Anycast DNS Race & Switcher (DoH)</h2>
+          </div>
+          <div class="action-bar">
+            <button class="btn btn-turbo" id="btn-run-dns-race"><i class="fa-solid fa-bolt"></i> RUN LIVE DNS RACE</button>
+            <div id="fastest-dns-banner" class="fastest-banner hidden"><i class="fa-solid fa-trophy"></i> Fastest: <b id="fastest-dns-name">--</b></div>
+          </div>
+          <div class="dns-race-list" id="dns-results-container"></div>
+        </div>
+      </section>
+
+      <!-- TAB 14: OFF-GRID P2P MESH -->
+      <section id="tab-mesh" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag">ZERO INFRASTRUCTURE</span>
+            <h2>Decentralized Off-Grid P2P Mesh Relay</h2>
+          </div>
+          <div class="grid-2-col">
+            <div class="mesh-topology-box">
+              <div class="box-head">Active Mesh Topology Map</div>
+              <div class="nodes-list" id="mesh-nodes-list"></div>
+            </div>
+            <div class="mesh-chat-box">
+              <div class="box-head">Off-Grid Packet Broadcast</div>
+              <div class="chat-log" id="mesh-chat-log"></div>
+              <div class="chat-input-row">
+                <input type="text" id="mesh-input" class="cyber-input" placeholder="Type off-grid packet...">
+                <button class="btn btn-turbo" id="btn-mesh-send">SEND</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL FOR 4G LTE ULTRA BOOSTER -->
+  <div id="modal-4g" class="modal-overlay hidden">
+    <div class="modal-card modal-4g-card">
+      <div class="modal-header" style="color: var(--cyan-neon);">
+        <i class="fa-solid fa-bolt"></i> 4G LTE ULTRA BOOSTER ENGAGED
+      </div>
+      <div class="modal-body" id="modal-4g-body">
+        <div class="turbo-step" id="step-4g-1"><i class="fa-solid fa-circle-notch fa-spin"></i> Step 1: Locking 4G Carrier Aggregation (Band 3 1800MHz + Band 7 2600MHz)...</div>
+        <div class="turbo-step pending" id="step-4g-2"><i class="fa-regular fa-circle"></i> Step 2: Unlocking 256-QAM Modulation (+33% Data Rate per Hz)...</div>
+        <div class="turbo-step pending" id="step-4g-3"><i class="fa-regular fa-circle"></i> Step 3: Clamping 4G Path MTU to 1420B (Eliminating 572ms Bufferbloat)...</div>
+        <div class="turbo-step pending" id="step-4g-4"><i class="fa-regular fa-circle"></i> Step 4: Initializing 8 Parallel Socket Channels & Compound TCP...</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-4g-pulse" id="btn-modal-4g-close" disabled>OPTIMIZING 4G LTE...</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL FOR 3G HIGH ULTRA BOOSTER -->
+  <div id="modal-3g" class="modal-overlay hidden">
+    <div class="modal-card modal-3g-card">
+      <div class="modal-header" style="color: var(--amber-neon);">
+        <i class="fa-solid fa-tower-broadcast"></i> 3G HIGH ULTRA BOOSTER ENGAGED
+      </div>
+      <div class="modal-body" id="modal-3g-body">
+        <div class="turbo-step" id="step-3g-1"><i class="fa-solid fa-circle-notch fa-spin"></i> Step 1: Locking Dual-Carrier DC-HSPA+ (42 Mbps Cap)...</div>
+        <div class="turbo-step pending" id="step-3g-2"><i class="fa-regular fa-circle"></i> Step 2: Clamping 3G Path MTU to 1360B (Zero RLC Packet Splits)...</div>
+        <div class="turbo-step pending" id="step-3g-3"><i class="fa-regular fa-circle"></i> Step 3: Engaging RRC CELL_DCH State Lock (Eliminating 2.5s FACH Sleep)...</div>
+        <div class="turbo-step pending" id="step-3g-4"><i class="fa-regular fa-circle"></i> Step 4: Calibrating TCP BBR High-RTT Congestion Protocol...</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-3g-pulse" id="btn-modal-3g-close" disabled>OPTIMIZING 3G...</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL FOR 1-CLICK ALL TURBO -->
+  <div id="turbo-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> 1-CLICK FULL SYSTEM TURBO OPTIMIZER
+      </div>
+      <div class="modal-body" id="turbo-steps-log">
+        <div class="turbo-step" id="t-step-1"><i class="fa-solid fa-circle-notch fa-spin"></i> Step 1: Flushing DNS Cache & Anycast Routing...</div>
+        <div class="turbo-step pending" id="t-step-2"><i class="fa-regular fa-circle"></i> Step 2: Clamping MTU to 1420 (Eliminating 572ms Bufferbloat)...</div>
+        <div class="turbo-step pending" id="t-step-3"><i class="fa-regular fa-circle"></i> Step 3: Calibrating TCP Window Auto-Tuning & BBR Congestion...</div>
+        <div class="turbo-step pending" id="t-step-4"><i class="fa-regular fa-circle"></i> Step 4: Activating Ethio Telecom Profile (Band 3 / Band 8 Rural Locking)...</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-turbo" id="btn-modal-close" disabled>OPTIMIZING...</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

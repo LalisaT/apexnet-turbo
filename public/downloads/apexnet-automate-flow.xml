@@ -1,0 +1,44 @@
+<TaskerData sr="" dvi="1" tv="5.14.7">
+	<Profile sr="prof1" ve="2">
+		<cdate>1725134400000</cdate>
+		<edate>1725134400000</edate>
+		<id>1001</id>
+		<mid0>2001</mid0>
+		<nme>ApexNet Auto 4G/3G Mode Lock</nme>
+		<State sr="con0" ve="2">
+			<code>160</code>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3"/>
+			<Str sr="arg2" ve="3"/>
+		</State>
+	</Profile>
+	<Task sr="task2001">
+		<cdate>1725134400000</cdate>
+		<edate>1725134400000</edate>
+		<id>2001</id>
+		<nme>ApexNet_Lock_Radio</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>877</code>
+			<Str sr="arg0" ve="3">android.intent.action.MAIN</Str>
+			<Int sr="arg1" val="0"/>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3">com.android.settings</Str>
+			<Str sr="arg6" ve="3">com.android.settings.RadioInfo</Str>
+			<Str sr="arg7" ve="3"/>
+			<Str sr="arg8" ve="3"/>
+			<Int sr="arg9" val="1"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>123</code>
+			<Str sr="arg0" ve="3">settings put global tether_dun_required 0; settings put global tether_entitlement_check_state 0</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="1"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+		</Action>
+	</Task>
+</TaskerData>

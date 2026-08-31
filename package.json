@@ -1,0 +1,14 @@
+{
+  "name": "apexnet-turbo-suite",
+  "version": "1.0.0",
+  "description": "All-In-One Mobile Data, Radio Band Diagnostic, Anti-Throttling, and Off-Grid Mesh Acceleration Suite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0",
+    "axios": "^1.7.2"
+  }
+}
