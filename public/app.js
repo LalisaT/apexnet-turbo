@@ -70,13 +70,21 @@ function initPwaInstall() {
 }
 
 // ==========================================
-// 1. TAB NAVIGATION
+// 1. TAB NAVIGATION & MOBILE DRAWER POPUP
 // ==========================================
 function initTabNavigation() {
   const navBtns = document.querySelectorAll('.nav-btn');
+  const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
   const tabViews = document.querySelectorAll('.tab-view');
   const pageTitle = document.getElementById('page-title');
   const pageSubtitle = document.getElementById('page-subtitle');
+
+  const sidebarDrawer = document.getElementById('sidebar-drawer');
+  const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+  const btnMobileMenu = document.getElementById('btn-mobile-menu');
+  const btnMobileDots = document.getElementById('btn-mobile-dots');
+  const btnMobileMore = document.getElementById('btn-mobile-more-menu');
+  const btnSidebarClose = document.getElementById('btn-sidebar-close');
 
   const titles = {
     'tab-speed': { title: 'Live Line Throughput & Precision Telemetry', sub: 'Real-time multi-socket precision burst with zero packet fragmentation' },
@@ -95,21 +103,59 @@ function initTabNavigation() {
     'tab-mesh': { title: 'Off-Grid Decentralized P2P Mesh Relay', sub: 'Direct peer-to-peer data hopping without cellular towers' }
   };
 
+  function openMobileDrawer() {
+    if (sidebarDrawer) sidebarDrawer.classList.add('mobile-open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
+  }
+
+  function closeMobileDrawer() {
+    if (sidebarDrawer) sidebarDrawer.classList.remove('mobile-open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+  }
+
+  if (btnMobileMenu) btnMobileMenu.addEventListener('click', openMobileDrawer);
+  if (btnMobileDots) btnMobileDots.addEventListener('click', openMobileDrawer);
+  if (btnMobileMore) btnMobileMore.addEventListener('click', openMobileDrawer);
+  if (btnSidebarClose) btnSidebarClose.addEventListener('click', closeMobileDrawer);
+  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeMobileDrawer);
+
+  function switchTab(targetTab) {
+    if (!targetTab) return;
+
+    navBtns.forEach(b => {
+      if (b.getAttribute('data-tab') === targetTab) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+
+    mobileNavBtns.forEach(b => {
+      if (b.getAttribute('data-tab') === targetTab) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+
+    tabViews.forEach(t => t.classList.remove('active'));
+
+    const activeView = document.getElementById(targetTab);
+    if (activeView) activeView.classList.add('active');
+
+    if (titles[targetTab] && pageTitle && pageSubtitle) {
+      pageTitle.textContent = titles[targetTab].title;
+      pageSubtitle.textContent = titles[targetTab].sub;
+    }
+
+    closeMobileDrawer();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   navBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetTab = btn.getAttribute('data-tab');
+      switchTab(btn.getAttribute('data-tab'));
+    });
+  });
 
-      navBtns.forEach(b => b.classList.remove('active'));
-      tabViews.forEach(t => t.classList.remove('active'));
-
-      btn.classList.add('active');
-      const activeView = document.getElementById(targetTab);
-      if (activeView) activeView.classList.add('active');
-
-      if (titles[targetTab] && pageTitle && pageSubtitle) {
-        pageTitle.textContent = titles[targetTab].title;
-        pageSubtitle.textContent = titles[targetTab].sub;
-      }
+  mobileNavBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-tab');
+      if (tab) switchTab(tab);
     });
   });
 }

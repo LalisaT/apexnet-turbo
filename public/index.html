@@ -12,14 +12,20 @@
 </head>
 <body>
   <div class="app-container">
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="sidebar">
+    <!-- SIDEBAR BACKDROP FOR MOBILE -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- SIDEBAR NAVIGATION (DRAWER POPUP ON MOBILE) -->
+    <aside class="sidebar" id="sidebar-drawer">
       <div class="logo-zone">
         <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
         <div class="logo-text">
           <span class="brand-title">APEX<span class="highlight">NET</span></span>
           <span class="brand-sub">TURBO SUITE v6.5</span>
         </div>
+        <button class="btn-sidebar-close" id="btn-sidebar-close" aria-label="Close Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
 
       <nav class="nav-menu">
@@ -94,6 +100,18 @@
     <main class="main-content">
       <!-- HEADER -->
       <header class="top-header">
+        <div class="header-mobile-bar">
+          <button class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Open Menu">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+          <div class="mobile-brand-title">
+            <i class="fa-solid fa-bolt-lightning" style="color: var(--cyan-neon);"></i> APEX<span>NET</span>
+          </div>
+          <button class="btn-mobile-dots" id="btn-mobile-dots" aria-label="Open Navigation">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+        </div>
+
         <div class="header-left">
           <h1 id="page-title">Live Line Throughput & Speed Ultra Booster</h1>
           <p class="subtitle" id="page-subtitle">Real-time socket testing with zero packet fragmentation</p>
@@ -806,6 +824,30 @@ netsh int tcp set global ecncapability=enabled</code></pre>
       </div>
     </div>
   </div>
+
+  <!-- FLOATING MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-nav-btn active" data-tab="tab-speed">
+      <i class="fa-solid fa-gauge-high"></i>
+      <span>Speed</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="tab-4g">
+      <i class="fa-solid fa-bolt" style="color: var(--cyan-neon);"></i>
+      <span>4G Boost</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="tab-3g">
+      <i class="fa-solid fa-tower-broadcast" style="color: var(--amber-neon);"></i>
+      <span>3G Boost</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="tab-phone-tools">
+      <i class="fa-solid fa-mobile-screen-button" style="color: var(--green-neon);"></i>
+      <span>Phone</span>
+    </button>
+    <button class="mobile-nav-btn" id="btn-mobile-more-menu">
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+      <span>More</span>
+    </button>
+  </nav>
 
   <script src="app.js"></script>
 </body>
