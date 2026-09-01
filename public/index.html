@@ -629,8 +629,11 @@ npx cap open android</code></pre>
               <button class="btn btn-secondary btn-sm" id="btn-copy-sqm"><i class="fa-solid fa-copy"></i> Copy Command</button>
             </div>
             <pre class="terminal-view"><code>netsh int tcp set global autotuninglevel=normal
-netsh int tcp set global congestionprovider=ctcp
-netsh int tcp set global ecncapability=enabled</code></pre>
+netsh int tcp set supplemental template=internet congestionprovider=ctcp
+netsh int tcp set global ecncapability=enabled
+netsh int tcp set global rss=enabled
+powershell -Command "Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | ForEach-Object { netsh interface ipv4 set subinterface $_.Name mtu=1420 store=persistent }"
+ipconfig /flushdns</code></pre>
           </div>
         </div>
       </section>

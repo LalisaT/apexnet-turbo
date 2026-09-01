@@ -875,8 +875,11 @@ function initBufferbloatEngine() {
   if (btnCopy) {
     btnCopy.addEventListener('click', () => {
       const text = `netsh int tcp set global autotuninglevel=normal
-netsh int tcp set global congestionprovider=ctcp
-netsh int tcp set global ecncapability=enabled`;
+netsh int tcp set supplemental template=internet congestionprovider=ctcp
+netsh int tcp set global ecncapability=enabled
+netsh int tcp set global rss=enabled
+powershell -Command "Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | ForEach-Object { netsh interface ipv4 set subinterface $_.Name mtu=1420 store=persistent }"
+ipconfig /flushdns`;
       navigator.clipboard.writeText(text);
       btnCopy.textContent = 'Copied to Clipboard!';
       setTimeout(() => btnCopy.textContent = 'Copy Command', 2000);

@@ -274,7 +274,7 @@ echo [+] 1. Enabling Windows TCP Auto-Tuning (Full Line Speed)...
 netsh int tcp set global autotuninglevel=normal
 
 echo [+] 2. Setting Compound TCP Congestion Provider...
-netsh int tcp set global congestionprovider=ctcp
+netsh int tcp set supplemental template=internet congestionprovider=ctcp 2>nul || netsh int tcp set global congestionprovider=ctcp 2>nul
 
 echo [+] 3. Enabling Explicit Congestion Notification (ECN)...
 netsh int tcp set global ecncapability=enabled
@@ -484,13 +484,13 @@ adb shell am start -n com.android.settings/.RadioInfo`;
           output = `[+] WINDOWS PC 1-CLICK OPTIMIZATION COMMAND (Powershell / Admin):
 --------------------------------------------------------------
 netsh int tcp set global autotuninglevel=normal
-netsh int tcp set global congestionprovider=ctcp
+netsh int tcp set supplemental template=internet congestionprovider=ctcp
 netsh int tcp set global ecncapability=enabled
 netsh int tcp set global rss=enabled
 powershell -Command "Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | ForEach-Object { netsh interface ipv4 set subinterface $_.Name mtu=1420 store=persistent }"
 ipconfig /flushdns
 --------------------------------------------------------------
-[OK] Run this in Windows PowerShell (Admin) for 100% full line speed on PC!`;
+[OK] Windows 10/11 Network Stack Optimized for Maximum Cellular Line Speed!`;
         } else if (trimmed === 'phone lock 4g' || trimmed === 'adb 4g') {
           output = `[+] 1-TAP ANDROID 4G ONLY LOCK COMMAND (ADB / Termux):
 --------------------------------------------------------------
@@ -744,7 +744,7 @@ adb shell settings put global tether_entitlement_check_state 0
           script = `# APEXNET WINDOWS NETWORK ACCELERATOR
 Write-Host "[+] Initializing ApexNet Windows Optimization..." -ForegroundColor Cyan
 netsh int tcp set global autotuninglevel=normal
-netsh int tcp set global congestionprovider=ctcp
+netsh int tcp set supplemental template=internet congestionprovider=ctcp
 netsh int tcp set global ecncapability=enabled
 netsh int tcp set global timestamps=disabled
 netsh int tcp set global rss=enabled
