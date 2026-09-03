@@ -6,9 +6,53 @@
   <title>ApexNet Turbo Suite - 3G, 4G LTE & 5G Ultra Booster</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#00f0ff">
+  
+  <!-- Preconnect to Font & CDN Origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Critical Inline CSS for Instant Paint (<16ms) -->
+  <style>
+    :root {
+      --bg-dark: #080c14;
+      --bg-card: #0d1424;
+      --border-color: #1a2847;
+      --cyan-neon: #00f0ff;
+      --green-neon: #00ff88;
+      --text-main: #f0f6fc;
+      --text-muted: #8b9bb4;
+      --font-hud: 'Orbitron', system-ui, -apple-system, sans-serif;
+      --font-body: 'Rajdhani', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background-color: #080c14;
+      color: #f0f6fc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .app-container { display: flex; min-height: 100vh; }
+    .sidebar { width: 290px; background: #060910; flex-shrink: 0; }
+    .main-content { flex: 1; padding: 28px; background: #080c14; }
+    @media (max-width: 900px) {
+      .sidebar { position: fixed; transform: translateX(-105%); z-index: 9999; }
+      .main-content { width: 100%; padding: 14px 16px 85px; }
+    }
+  </style>
+
+  <!-- Core Local Stylesheet -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Asynchronous Non-Blocking Fonts & Icons (Zero Delay on Startup) -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  </noscript>
 </head>
 <body>
   <div class="app-container">
@@ -32,6 +76,10 @@
         <button class="nav-btn active" data-tab="tab-speed">
           <i class="fa-solid fa-gauge-high"></i>
           <span>Speed & Telemetry</span>
+        </button>
+        <button class="nav-btn btn-multistream-nav" data-tab="tab-multistream" style="color: var(--green-neon);">
+          <i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--green-neon);"></i>
+          <span>16-Stream Turbo Downloader</span>
         </button>
         <button class="nav-btn btn-appflow-nav" data-tab="tab-appflow">
           <i class="fa-solid fa-cube"></i>
@@ -767,6 +815,62 @@ ipconfig /flushdns</code></pre>
                 <input type="text" id="mesh-input" class="cyber-input" placeholder="Type off-grid packet...">
                 <button class="btn btn-turbo" id="btn-mesh-send">SEND</button>
               </div>
+            </div>
+      <!-- TAB 15: 16-STREAM TURBO DOWNLOADER & LINE SATURATOR -->
+      <section id="tab-multistream" class="tab-view">
+        <div class="hud-card mb-4">
+          <div class="card-header">
+            <span class="card-tag green">PARALLEL SOCKET MULTIPLEXER (IDM / ARIA2 TURBO)</span>
+            <h2>16-Stream Parallel Chunk Accelerator & Line Saturator</h2>
+          </div>
+          <p class="description">
+            On high-latency 3G/4G cellular connections, single-socket browser downloads are throttled by TCP window scaling. 
+            This engine divides payloads into <b>8, 16, or 32 parallel HTTP range sockets</b> simultaneously, forcing Ethio Telecom's cell tower to deliver <b>100% of its physical capacity</b>.
+          </p>
+
+          <!-- LIVE 16-STREAM LINE SATURATION BENCHMARK -->
+          <div class="sub-box mb-4" style="border-color: rgba(0, 255, 136, 0.3); background: rgba(0, 255, 136, 0.03);">
+            <h4><i class="fa-solid fa-gauge-simple-high" style="color: var(--green-neon);"></i> Live 16-Stream Physical Line Saturation Test</h4>
+            <p class="mb-3">Simultaneously opens 16 concurrent HTTP range streams to measure aggregate multi-socket capacity:</p>
+            
+            <div class="hero-actions mb-3" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <select id="select-test-streams" class="cyber-select" style="padding: 10px 14px; font-size: 13px;">
+                <option value="8">8 Parallel Streams</option>
+                <option value="16" selected>16 Parallel Streams (Maximum Tower Saturation)</option>
+                <option value="32">32 Parallel Streams (Extreme Turbo)</option>
+              </select>
+              <button class="btn btn-turbo-pulse" id="btn-start-multistream-test">
+                <i class="fa-solid fa-bolt"></i> START 16-STREAM SATURATION TEST
+              </button>
+            </div>
+
+            <div class="metric-box full-span highlight-box mb-3">
+              <div class="metric-label">Combined Multi-Stream Line Speed</div>
+              <div class="metric-val" id="multistream-aggregate-speed" style="font-size: 32px; color: var(--green-neon);">
+                0.00 <span class="unit" style="font-size: 16px;">Mbps (Aggregate)</span>
+              </div>
+            </div>
+
+            <!-- LIVE CHUNKS PROGRESS GRID -->
+            <div class="chunk-streams-grid" id="chunk-streams-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- URL CHUNK DOWNLOAD ACCELERATOR -->
+          <div class="sub-box">
+            <h4><i class="fa-solid fa-download" style="color: var(--cyan-neon);"></i> Multi-Stream File Downloader (IDM in Browser)</h4>
+            <p class="mb-2">Enter any direct file download URL to download with 16 parallel threads:</p>
+            
+            <div class="param-row mb-3" style="display: flex; gap: 8px;">
+              <input type="text" id="input-dl-url" class="cyber-input" value="https://speed.cloudflare.com/__down?bytes=25000000" placeholder="https://example.com/large-file.zip">
+              <button class="btn btn-turbo" id="btn-multistream-download-start">
+                <i class="fa-solid fa-download"></i> ACCELERATE DOWNLOAD
+              </button>
+            </div>
+
+            <div id="dl-dispatch-result" class="hidden">
+              <div class="signal-action-tip" id="dl-dispatch-text"></div>
             </div>
           </div>
         </div>

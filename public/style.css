@@ -18,9 +18,9 @@
   --text-muted: #8b9bb4;
   --text-dim: #4a5b78;
 
-  --font-hud: 'Orbitron', sans-serif;
-  --font-body: 'Rajdhani', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-hud: 'Orbitron', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Rajdhani', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
 }
 
 * {
@@ -260,6 +260,58 @@ body {
 .term-input-field {
   flex: 1; background: transparent; border: none; color: #fff; font-family: var(--font-mono);
   font-size: 13px; outline: none;
+}
+
+/* CHUNK STREAMS GRID */
+.chunk-streams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.chunk-card {
+  background: rgba(4, 7, 13, 0.85);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chunk-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.chunk-name {
+  color: var(--cyan-neon);
+  font-weight: 700;
+}
+
+.chunk-speed {
+  color: var(--green-neon);
+}
+
+.chunk-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #101a2e;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.chunk-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan-neon), var(--green-neon));
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.15s ease;
 }
 
 /* ==========================================================================
